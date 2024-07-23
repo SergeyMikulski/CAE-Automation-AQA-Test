@@ -17,19 +17,20 @@ namespace CAE_TestProject
 
         public TestsBase()
         {
-            var driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-            driver.Manage().Window.Maximize();
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
 
-            _driver = driver;
-            _wait = wait;
         }
 
 
         [SetUp]
         public void Setup()
         {
+            var driver = new ChromeDriver();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            driver.Manage().Window.Maximize();
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
+            _driver = driver;
+            _wait = wait;
+
             _driver.Navigate().GoToUrl("https://www.21vek.by/");
             AlertsCloseHelper.CookiesAlertClose(_driver, _wait);
         }
@@ -38,7 +39,6 @@ namespace CAE_TestProject
         public void Teardown()
         {
             _driver.Quit();
-            _driver.Dispose();
         }
     }
 }

@@ -19,11 +19,17 @@ namespace CAE_TestProject.PageObjects
 
         private IWebElement GoodsSearchField => SearchContainer.FindElement(By.Id("catalogSearch"));
 
+        private IWebElement CatalogueButton => _driver.FindElement(By.XPath(".//*[contains(@class, 'styles_catalogButton')]"));
 
         public void DoSearch(string searchText)
         {
             GoodsSearchField.SendKeys(searchText);
             GoodsSearchField.SendKeys(Keys.Enter);
+        }
+
+        public void CatalogButtonClick()
+        {
+            CatalogueButton.Click();
         }
     }
 }
